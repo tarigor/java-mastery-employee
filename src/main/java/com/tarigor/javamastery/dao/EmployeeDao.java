@@ -18,12 +18,16 @@ import java.util.List;
 @Repository
 public class EmployeeDao {
 
+    public static final String QUERY_ADD_EMPLOYEE = "INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES(?,?,?,?,?,?)";
+    public static final String QUERY_DELETE_EMPLOYEE = "delete from employee where employee_id = ?";
+    public static final String QUERY_UPDATE_EMPLOYEE = "UPDATE employee SET first_name =? , last_name =?, department_id=?, job_title=?, gender=?, date_of_birth=? where employee_id=?";
+    public static final String QUERY_GET_ALL_EMPLOYEES = "select * from employee";
+    public static final String QUERY_GET_EMPLOYEE_BY_ID = "select * from employee where employee_id = ?";
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public int addEmployee(Employee employee) {
-        String query = "INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES(?,?,?,?,?,?)";
-        return jdbcTemplate.update(query,
+        return jdbcTemplate.update(QUERY_ADD_EMPLOYEE,
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getDepartmentId(),
@@ -33,13 +37,11 @@ public class EmployeeDao {
     }
 
     public int deleteEmployee(int id) {
-        String query = "delete from employee where employee_id = ?";
-        return jdbcTemplate.update(query, id);
+        return jdbcTemplate.update(QUERY_DELETE_EMPLOYEE, id);
     }
 
     public int updateEmployee(Long id, Employee employee) {
-        String query = "UPDATE employee SET first_name =? , last_name =?, department_id=?, job_title=?, gender=?, date_of_birth=? where employee_id=?";
-        return jdbcTemplate.update(query,
+        return jdbcTemplate.update(QUERY_UPDATE_EMPLOYEE,
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getDepartmentId(),
@@ -50,15 +52,13 @@ public class EmployeeDao {
     }
 
     public List<Employee> getAllEmployees() {
-        String query = "select * from employee";
-        return jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(Employee.class));
+        return jdbcTemplate.query(QUERY_GET_ALL_EMPLOYEES, BeanPropertyRowMapper.newInstance(Employee.class));
     }
 
     public Employee getEmployeeById(Long id) {
-        String query = "select * from employee where employee_id = ?";
         Employee employee;
         try {
-            employee = jdbcTemplate.queryForObject(query, BeanPropertyRowMapper.newInstance(Employee.class), id);
+            employee = jdbcTemplate.queryForObject(QUERY_GET_EMPLOYEE_BY_ID, BeanPropertyRowMapper.newInstance(Employee.class), id);
         } catch (EmptyResultDataAccessException e) {
             return null;
         }

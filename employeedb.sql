@@ -5,7 +5,7 @@ create table employee
             primary key,
     first_name     varchar(100) not null,
     last_name      varchar(100) not null,
-    departament_id serial       not null,
+    department_id  serial       not null,
     job_title      varchar(100) not null,
     gender         varchar(10)  not null,
     date_of_birth  date         not null
