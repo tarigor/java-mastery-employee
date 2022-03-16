@@ -40,10 +40,6 @@ public class EmployeeController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
         Employee employeeFromDb = employeeService.getEmployeeById(id);
-        if (employeeFromDb != null) {
-            return new ResponseEntity<>(employeeFromDb, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
+        return employeeFromDb != null ? new ResponseEntity<>(employeeFromDb, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 }

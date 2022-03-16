@@ -9,12 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//- добавлять новых сотрудников;
-//- удалять уволенных;
-//- обновлять данные о сотрудниках;
-//- а также должна быть возможность просмотреть весь список сотрудников сразу;
-//- отдельно получить каждого сотрудника.
-
 @Repository
 public class EmployeeDao {
 
@@ -23,6 +17,7 @@ public class EmployeeDao {
     public static final String QUERY_UPDATE_EMPLOYEE = "UPDATE employee SET first_name =? , last_name =?, department_id=?, job_title=?, gender=?, date_of_birth=? where employee_id=?";
     public static final String QUERY_GET_ALL_EMPLOYEES = "select * from employee";
     public static final String QUERY_GET_EMPLOYEE_BY_ID = "select * from employee where employee_id = ?";
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
