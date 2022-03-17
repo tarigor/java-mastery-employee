@@ -6,9 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JavaMasteryApplication {
 
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
-
     public static void main(String[] args) {
         SpringApplication.run(JavaMasteryApplication.class, args);
     }

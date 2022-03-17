@@ -1,6 +1,6 @@
 package com.tarigor.javamastery.service.impl;
 
-import com.tarigor.javamastery.dao.EmployeeDao;
+import com.tarigor.javamastery.dao.impl.EmployeeDaoImpl;
 import com.tarigor.javamastery.dto.Employee;
 import com.tarigor.javamastery.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.List;
 public class EmployeeServiceImpl implements IEmployeeService {
 
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeDaoImpl employeeDao;
 
     @Override
     public int addEmployee(Employee employee) {

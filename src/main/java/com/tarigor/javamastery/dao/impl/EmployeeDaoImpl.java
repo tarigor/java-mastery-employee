@@ -1,5 +1,6 @@
-package com.tarigor.javamastery.dao;
+package com.tarigor.javamastery.dao.impl;
 
+import com.tarigor.javamastery.dao.IEmploeeDao;
 import com.tarigor.javamastery.dto.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class EmployeeDao {
+public class EmployeeDaoImpl implements IEmploeeDao {
 
     public static final String QUERY_ADD_EMPLOYEE = "INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES(?,?,?,?,?,?)";
     public static final String QUERY_DELETE_EMPLOYEE = "delete from employee where employee_id = ?";
@@ -21,6 +22,7 @@ public class EmployeeDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Override
     public int addEmployee(Employee employee) {
         return jdbcTemplate.update(QUERY_ADD_EMPLOYEE,
                 employee.getFirstName(),
@@ -31,10 +33,12 @@ public class EmployeeDao {
                 employee.getDateOfBirth());
     }
 
+    @Override
     public int deleteEmployee(int id) {
         return jdbcTemplate.update(QUERY_DELETE_EMPLOYEE, id);
     }
 
+    @Override
     public int updateEmployee(Long id, Employee employee) {
         return jdbcTemplate.update(QUERY_UPDATE_EMPLOYEE,
                 employee.getFirstName(),
@@ -46,10 +50,12 @@ public class EmployeeDao {
                 id);
     }
 
+    @Override
     public List<Employee> getAllEmployees() {
         return jdbcTemplate.query(QUERY_GET_ALL_EMPLOYEES, BeanPropertyRowMapper.newInstance(Employee.class));
     }
 
+    @Override
     public Employee getEmployeeById(Long id) {
         Employee employee;
         try {
