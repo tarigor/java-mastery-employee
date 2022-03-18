@@ -1,15 +1,15 @@
-package com.tarigor.javamastery.service;
+package com.tarigor.javamastery.dao;
 
 import com.tarigor.javamastery.dto.Employee;
 
 import java.util.List;
 
-public interface IEmployeeService {
+public interface EmploeeDao {
     int addEmployee(Employee employee);
 
-    int deleteEmployee(int employeeId);
+    int deleteEmployee(int id);
 
-    boolean updateEmployeeData(Long id, Employee employee);
+    int updateEmployee(Long id, Employee employee);
 
     List<Employee> getAllEmployees();
 

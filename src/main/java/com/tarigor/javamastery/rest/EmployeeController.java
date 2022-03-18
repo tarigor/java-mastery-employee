@@ -16,30 +16,29 @@ public class EmployeeController {
     @Autowired
     private EmployeeServiceImpl employeeService;
 
-    @RequestMapping(method = RequestMethod.POST)
-    public HttpStatus addEmployee(@RequestBody Employee employee) {
-        return employeeService.addEmployee(employee) == 0 ? HttpStatus.BAD_REQUEST : HttpStatus.CREATED;
+    @PostMapping
+    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+        return employeeService.addEmployee(employee);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public HttpStatus deleteEmployee(@PathVariable int id) {
-        return employeeService.deleteEmployee(id) == 0 ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
+        return employeeService.deleteEmployee(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
-    public HttpStatus updateEmployeeData(@RequestBody Employee employee) {
-        return employeeService.updateEmployeeData(employee.getEmployeeId(), employee) ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Employee> updateEmployeeData(@PathVariable Long id, @RequestBody Employee employee) {
+        return employeeService.updateEmployeeData(id, employee);
     }
 
-    @RequestMapping(value = "/employees", method = RequestMethod.GET)
+    @GetMapping(value = "/employees")
     @ResponseStatus(HttpStatus.OK)
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-        Employee employeeFromDb = employeeService.getEmployeeById(id);
-        return employeeFromDb != null ? new ResponseEntity<>(employeeFromDb, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        return employeeService.getEmployeeById(id);
     }
 }
