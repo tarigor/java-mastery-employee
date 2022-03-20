@@ -14,4 +14,7 @@ public interface EmploeeDao {
     List<Employee> getAllEmployees();
 
     Employee getEmployeeById(Long id);
+
+    List<Employee> findByPartOfFirstOrAndLastName(String firstName, String lastName);
+
 }

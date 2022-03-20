@@ -16,4 +16,6 @@ public interface EmployeeService {
     List<Employee> getAllEmployees();
 
     ResponseEntity<Employee> getEmployeeById(Long id);
+
+    ResponseEntity<List<Employee>> findByFirstOrAndLastName(String firstName, String lastName);
 }
