@@ -1,9 +1,11 @@
 package com.tarigor.javamastery.rest;
 
 import com.tarigor.javamastery.dto.Employee;
+import com.tarigor.javamastery.exception.ResourceNotFoundException;
 import com.tarigor.javamastery.service.impl.EmployeeServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,43 +23,32 @@ public class EmployeeController {
 
     @PostMapping
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
-        return employeeService.addEmployee(employee);
+        return new ResponseEntity<>(employeeService.addEmployee(employee), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    public HttpStatus deleteEmployee(@PathVariable int id) {
-        return employeeService.deleteEmployee(id);
+    public ResponseEntity deleteEmployee(@PathVariable Long id) {
+        employeeService.deleteEmployee(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Employee> updateEmployeeData(@PathVariable Long id, @RequestBody Employee employee) {
-        return employeeService.updateEmployeeData(id, employee);
+        return new ResponseEntity<>(employeeService.updateEmployeeData(id, employee), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/employees")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+    @GetMapping(value = "/")
+    public ResponseEntity<List<Employee>> getAllEmployees() {
+        return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-        return employeeService.getEmployeeById(id);
+        return new ResponseEntity<>(employeeService.getEmployeeById(id),HttpStatus.OK);
     }
 
-    @GetMapping(value = "/search")
-    public ResponseEntity<List<Employee>> searchEmployee(@RequestParam Map<String, String> employeeDetailsMap){
-        String firstName = employeeDetailsMap.get("firstName");
-        String lastName = employeeDetailsMap.get("lastName");
-        return employeeService.findByFirstOrAndLastName(firstName,lastName);
-    }
-    @GetMapping(value = "/log")
-    public String log() {
-        log.trace("This is a TRACE level message");
-        log.debug("This is a DEBUG level message");
-        log.info("This is an INFO level message");
-        log.warn("This is a WARN level message");
-        log.error("This is an ERROR level message");
-        return "See the log for details";
+    @GetMapping(value = "/find")
+    public ResponseEntity<List<Employee>> findEmployee(@RequestParam Map<String, String> employeeDetailsMap) {
+        return new ResponseEntity<>(employeeService.findByFirstOrAndLastName(employeeDetailsMap), HttpStatus.OK);
     }
 }

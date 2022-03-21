@@ -2,15 +2,15 @@ package com.tarigor.javamastery.service.impl;
 
 import com.tarigor.javamastery.dao.impl.EmployeeDaoImpl;
 import com.tarigor.javamastery.dto.Employee;
-import com.tarigor.javamastery.exception.ErrorWhileAddEmployeeException;
+import com.tarigor.javamastery.exception.ResourceNotFoundException;
 import com.tarigor.javamastery.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -20,35 +20,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeDaoImpl employeeDao;
 
     @Override
-    public ResponseEntity<Employee> addEmployee(Employee employee) {
-        int id = employeeDao.addEmployee(employee);
-        if (id != 0) {
-            log.info("An employee with id->{} has been inserted", id);
-            return new ResponseEntity<>(employeeDao.getEmployeeById((long) id), HttpStatus.OK);
-        }
-        log.error("an error occur while an employee insert");
-        throw new ErrorWhileAddEmployeeException("an error occur while an employee insert");
+    public Employee addEmployee(Employee employee) {
+        return employeeDao.addEmployee(employee);
     }
 
     @Override
-    public HttpStatus deleteEmployee(int employeeId) {
-        return employeeDao.deleteEmployee(employeeId) == 0 ? HttpStatus.BAD_REQUEST : HttpStatus.OK;
+    public void deleteEmployee(Long id) {
+        getEmployeeById(id);
+        employeeDao.deleteEmployee(id);
     }
 
     @Override
-    public ResponseEntity<Employee> updateEmployeeData(Long id, Employee employee) {
-        Employee employee1FromDB = employeeDao.getEmployeeById(id);
-        if (employee1FromDB != null) {
-            employee1FromDB.setFirstName(employee.getFirstName());
-            employee1FromDB.setLastName(employee.getLastName());
-            employee1FromDB.setDepartmentId(employee.getDepartmentId());
-            employee1FromDB.setJobTitle(employee.getJobTitle());
-            employee1FromDB.setGender(employee.getGender());
-            employee1FromDB.setDateOfBirth(employee.getDateOfBirth());
-            int insertedId = employeeDao.updateEmployee(id, employee1FromDB);
-            return new ResponseEntity<>(employeeDao.getEmployeeById((long) insertedId), HttpStatus.OK);
-        }
-        throw new ErrorWhileAddEmployeeException("an error occur while an employee update");
+    public Employee updateEmployeeData(Long id, Employee employee) {
+        getEmployeeById(id);
+        return employeeDao.updateEmployee(id, employee);
     }
 
     @Override
@@ -57,13 +42,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public ResponseEntity<Employee> getEmployeeById(Long id) {
-        return new ResponseEntity<>(employeeDao.getEmployeeById(id), HttpStatus.OK);
+    public Employee getEmployeeById(Long id) {
+        try {
+            return employeeDao.getEmployeeById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(String.format("an user with id->%d has been not found", id));
+        }
     }
 
     @Override
-    public ResponseEntity<List<Employee>> findByFirstOrAndLastName(String firstName, String lastName) {
-        List<Employee> employeeFromDb = employeeDao.findByPartOfFirstOrAndLastName(firstName, lastName);
-        return employeeFromDb == null ? new ResponseEntity<>(null, HttpStatus.NOT_FOUND) : new ResponseEntity<>(employeeFromDb, HttpStatus.OK);
+    public List<Employee> findByFirstOrAndLastName(Map<String, String> employeeDetailsMap) {
+        String firstName = employeeDetailsMap.get("firstName");
+        String lastName = employeeDetailsMap.get("lastName");
+        return employeeDao.findByPartOfFirstOrAndLastName(firstName, lastName);
     }
 }

@@ -1,35 +1,31 @@
 package com.tarigor.javamastery.exception;
 
-import com.tarigor.javamastery.dto.ErrorMessage;
+import com.tarigor.javamastery.rest.error.ApiErrorResponse;
+import com.tarigor.javamastery.rest.error.ResponseEntityBuilder;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestControllerAdvice
-public class ApiExceptionHandler {
-
-    @ExceptionHandler(EmployeeNotFoundException.class)
+public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
+    @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorMessage employeeNotFoundException(EmployeeNotFoundException exception){
-        return new ErrorMessage(
+    public ResponseEntity<Object> entityNotFoundException(ResourceNotFoundException exception) {
+        List<String> details = new ArrayList<>();
+        details.add(exception.getMessage());
+        ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
+                LocalDateTime.now(),
                 HttpStatus.NOT_FOUND,
-                new Date(),
-                exception.getMessage(),
-                "an employee has been not found with a such id"
-        );
-    }
-
-    @ExceptionHandler(ErrorWhileAddEmployeeException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorMessage ErrorWhileAddEmployeeException(ErrorWhileAddEmployeeException exception){
-        return new ErrorMessage(
-                HttpStatus.BAD_REQUEST,
-                new Date(),
-                exception.getMessage(),
-                "an error appeared while employee add"
-        );
+                "Resource Not Found",
+                details);
+        return ResponseEntityBuilder.build(apiErrorResponse);
     }
 }

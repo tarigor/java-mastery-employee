@@ -5,11 +5,11 @@ import com.tarigor.javamastery.dto.Employee;
 import java.util.List;
 
 public interface EmploeeDao {
-    int addEmployee(Employee employee);
+    Employee addEmployee(Employee employee);
 
-    int deleteEmployee(int id);
+    void deleteEmployee(Long id);
 
-    int updateEmployee(Long id, Employee employee);
+    Employee updateEmployee(Long id, Employee employee);
 
     List<Employee> getAllEmployees();
 

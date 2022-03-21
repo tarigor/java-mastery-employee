@@ -1,21 +1,20 @@
 package com.tarigor.javamastery.service;
 
 import com.tarigor.javamastery.dto.Employee;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EmployeeService {
-    ResponseEntity<Employee> addEmployee(Employee employee);
+    Employee addEmployee(Employee employee);
 
-    HttpStatus deleteEmployee(int employeeId);
+    void deleteEmployee(Long employeeId);
 
-    ResponseEntity<Employee> updateEmployeeData(Long id, Employee employee);
+    Employee updateEmployeeData(Long id, Employee employee);
 
     List<Employee> getAllEmployees();
 
-    ResponseEntity<Employee> getEmployeeById(Long id);
+    Employee getEmployeeById(Long id);
 
-    ResponseEntity<List<Employee>> findByFirstOrAndLastName(String firstName, String lastName);
+    List<Employee> findByFirstOrAndLastName(Map<String, String> employeeDetailsMap);
 }
