@@ -1,15 +1,14 @@
 package com.tarigor.javamastery.rest;
 
 import com.tarigor.javamastery.dto.Employee;
-import com.tarigor.javamastery.exception.ResourceNotFoundException;
 import com.tarigor.javamastery.service.impl.EmployeeServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +21,7 @@ public class EmployeeController {
     private EmployeeServiceImpl employeeService;
 
     @PostMapping
-    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<Employee> addEmployee(@Valid @RequestBody Employee employee) {
         return new ResponseEntity<>(employeeService.addEmployee(employee), HttpStatus.OK);
     }
 
@@ -44,7 +43,7 @@ public class EmployeeController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-        return new ResponseEntity<>(employeeService.getEmployeeById(id),HttpStatus.OK);
+        return new ResponseEntity<>(employeeService.getEmployeeById(id), HttpStatus.OK);
     }
 
     @GetMapping(value = "/find")

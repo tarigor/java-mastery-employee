@@ -30,7 +30,8 @@ public class EmployeeDaoImpl implements EmploeeDao {
                 employee.getDepartmentId(),
                 employee.getJobTitle(),
                 employee.getGender(),
-                employee.getDateOfBirth()
+                employee.getDateOfBirth(),
+                employee.getAge()
         );
     }
 
@@ -48,6 +49,7 @@ public class EmployeeDaoImpl implements EmploeeDao {
                 employee.getJobTitle(),
                 employee.getGender(),
                 employee.getDateOfBirth(),
+                employee.getAge(),
                 id
         );
     }
