@@ -1,6 +1,6 @@
 package com.tarigor.javamastery.service;
 
-import com.tarigor.javamastery.dto.Employee;
+import com.tarigor.javamastery.entity.Employee;
 
 import java.util.List;
 import java.util.Map;

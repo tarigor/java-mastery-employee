@@ -1,6 +1,6 @@
 package com.tarigor.javamastery.rest;
 
-import com.tarigor.javamastery.dto.Employee;
+import com.tarigor.javamastery.entity.Employee;
 import com.tarigor.javamastery.service.impl.EmployeeServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

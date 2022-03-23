@@ -1,19 +1,24 @@
-package com.tarigor.javamastery.dto;
+package com.tarigor.javamastery.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 import java.sql.Date;
 
+@Entity
+@Table(name = "employee")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Employee implements Serializable {
+@NoArgsConstructor
+public class Employee {
+    @Id
     private Long employeeId;
     @NotBlank(message = "First Name is mandatory!")
     @Pattern(regexp = "^[A-Z][a-z]{1,18}$", message = "The format of name is not valid:1-Must contain only letters.2-Start with a capital letter.3-The number of letters is at least 2")

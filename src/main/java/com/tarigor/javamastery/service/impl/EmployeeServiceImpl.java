@@ -1,14 +1,14 @@
 package com.tarigor.javamastery.service.impl;
 
-import com.tarigor.javamastery.dao.impl.EmployeeDaoImpl;
-import com.tarigor.javamastery.dto.Employee;
+import com.tarigor.javamastery.entity.Employee;
 import com.tarigor.javamastery.exception.ResourceNotFoundException;
+import com.tarigor.javamastery.repository.EmployeeRepository;
 import com.tarigor.javamastery.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -17,43 +17,47 @@ import java.util.Map;
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeRepository employeeRepository;
 
     @Override
-    public Employee addEmployee(Employee employee) {
-        return employeeDao.addEmployee(employee);
+    public com.tarigor.javamastery.entity.Employee addEmployee(com.tarigor.javamastery.entity.Employee employee) {
+        return employeeRepository.save(employee);
     }
 
     @Override
     public void deleteEmployee(Long id) {
         getEmployeeById(id);
-        employeeDao.deleteEmployee(id);
+        employeeRepository.deleteAllById(Collections.singleton(id));
     }
 
     @Override
-    public Employee updateEmployeeData(Long id, Employee employee) {
+    public com.tarigor.javamastery.entity.Employee updateEmployeeData(Long id, com.tarigor.javamastery.entity.Employee employee) {
         getEmployeeById(id);
-        return employeeDao.updateEmployee(id, employee);
+        return employeeRepository.updateEmployee(employee.getFirstName(),
+                employee.getLastName(),
+                employee.getDepartmentId(),
+                employee.getJobTitle(),
+                employee.getGender(),
+                employee.getDateOfBirth(),
+                employee.getAge(),
+                id);
     }
 
     @Override
     public List<Employee> getAllEmployees() {
-        return employeeDao.getAllEmployees();
+        return employeeRepository.findAll();
     }
 
     @Override
     public Employee getEmployeeById(Long id) {
-        try {
-            return employeeDao.getEmployeeById(id);
-        } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(String.format("an user with id->%d has been not found", id));
-        }
+        return employeeRepository.getEmployeeByEmployeeId(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("an user with id->%d has been not found", id)));
     }
 
     @Override
     public List<Employee> findByFirstOrAndLastName(Map<String, String> employeeDetailsMap) {
         String firstName = employeeDetailsMap.get("firstName");
         String lastName = employeeDetailsMap.get("lastName");
-        return employeeDao.findByPartOfFirstOrAndLastName(firstName, lastName);
+        return employeeRepository.findEmployeeByFirstNameContainingAndLastNameContaining(firstName, lastName);
     }
 }
