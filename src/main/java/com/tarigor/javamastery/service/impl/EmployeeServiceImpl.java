@@ -4,8 +4,8 @@ import com.tarigor.javamastery.entity.Employee;
 import com.tarigor.javamastery.exception.ResourceNotFoundException;
 import com.tarigor.javamastery.repository.EmployeeRepository;
 import com.tarigor.javamastery.service.EmployeeService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -14,10 +14,10 @@ import java.util.Map;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Override
     public com.tarigor.javamastery.entity.Employee addEmployee(com.tarigor.javamastery.entity.Employee employee) {
@@ -55,9 +55,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> findByFirstOrAndLastName(Map<String, String> employeeDetailsMap) {
-        String firstName = employeeDetailsMap.get("firstName");
-        String lastName = employeeDetailsMap.get("lastName");
+    public List<Employee> findByFirstOrAndLastName(Map<String, String> employeeSearchParams) {
+        String firstName = employeeSearchParams.get("firstName");
+        String lastName = employeeSearchParams.get("lastName");
         return employeeRepository.findEmployeeByFirstNameContainingAndLastNameContaining(firstName, lastName);
     }
 }
