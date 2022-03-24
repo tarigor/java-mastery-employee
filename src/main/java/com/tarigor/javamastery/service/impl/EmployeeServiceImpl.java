@@ -1,11 +1,13 @@
 package com.tarigor.javamastery.service.impl;
 
+import com.tarigor.javamastery.dto.EmployeeDTO;
 import com.tarigor.javamastery.entity.Employee;
 import com.tarigor.javamastery.exception.ResourceNotFoundException;
 import com.tarigor.javamastery.repository.EmployeeRepository;
 import com.tarigor.javamastery.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -18,10 +20,11 @@ import java.util.Map;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final ModelMapper modelMapper;
 
     @Override
-    public com.tarigor.javamastery.entity.Employee addEmployee(com.tarigor.javamastery.entity.Employee employee) {
-        return employeeRepository.save(employee);
+    public Employee addEmployee(EmployeeDTO employeeDTO) {
+        return employeeRepository.save(modelMapper.map(employeeDTO, Employee.class));
     }
 
     @Override
@@ -31,16 +34,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public com.tarigor.javamastery.entity.Employee updateEmployeeData(Long id, com.tarigor.javamastery.entity.Employee employee) {
-        getEmployeeById(id);
-        return employeeRepository.updateEmployee(employee.getFirstName(),
-                employee.getLastName(),
-                employee.getDepartmentId(),
-                employee.getJobTitle(),
-                employee.getGender(),
-                employee.getDateOfBirth(),
-                employee.getAge(),
-                id);
+    public Employee updateEmployeeData(Long id, EmployeeDTO employeeDTO) {
+        Employee employeeFromDB = getEmployeeById(id);
+        return employeeRepository.save(updateEmployeeFromDB(employeeDTO, employeeFromDB));
+    }
+
+    private Employee updateEmployeeFromDB(EmployeeDTO employeeDTO, Employee employeeFromDB) {
+        employeeFromDB.setFirstName(employeeDTO.getFirstName());
+        employeeFromDB.setLastName(employeeDTO.getLastName());
+        employeeFromDB.setDepartmentId(employeeDTO.getDepartmentId());
+        employeeFromDB.setJobTitle(employeeDTO.getJobTitle());
+        employeeFromDB.setGender(employeeDTO.getGender());
+        employeeFromDB.setDateOfBirth(employeeDTO.getDateOfBirth());
+        employeeFromDB.setAge(employeeDTO.getAge());
+        return employeeFromDB;
     }
 
     @Override

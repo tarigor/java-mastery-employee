@@ -1,20 +1,20 @@
 package com.tarigor.javamastery.dao;
 
-import com.tarigor.javamastery.dto.Employee;
+import com.tarigor.javamastery.dto.EmployeeDTO;
 
 import java.util.List;
 
 public interface EmploeeDao {
-    Employee addEmployee(Employee employee);
+    EmployeeDTO addEmployee(EmployeeDTO employee);
 
     void deleteEmployee(Long id);
 
-    Employee updateEmployee(Long id, Employee employee);
+    EmployeeDTO updateEmployee(Long id, EmployeeDTO employee);
 
-    List<Employee> getAllEmployees();
+    List<EmployeeDTO> getAllEmployees();
 
-    Employee getEmployeeById(Long id);
+    EmployeeDTO getEmployeeById(Long id);
 
-    List<Employee> findByPartOfFirstOrAndLastName(String firstName, String lastName);
+    List<EmployeeDTO> findByPartOfFirstOrAndLastName(String firstName, String lastName);
 
 }

@@ -1,7 +1,7 @@
 package com.tarigor.javamastery.dao.impl;
 
 import com.tarigor.javamastery.dao.EmploeeDao;
-import com.tarigor.javamastery.dto.Employee;
+import com.tarigor.javamastery.dto.EmployeeDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,8 +23,8 @@ public class EmployeeDaoImpl implements EmploeeDao {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public Employee addEmployee(Employee employee) {
-        return jdbcTemplate.queryForObject(QUERY_ADD_EMPLOYEE, BeanPropertyRowMapper.newInstance(Employee.class),
+    public EmployeeDTO addEmployee(EmployeeDTO employee) {
+        return jdbcTemplate.queryForObject(QUERY_ADD_EMPLOYEE, BeanPropertyRowMapper.newInstance(EmployeeDTO.class),
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getDepartmentId(),
@@ -41,8 +41,8 @@ public class EmployeeDaoImpl implements EmploeeDao {
     }
 
     @Override
-    public Employee updateEmployee(Long id, Employee employee) {
-        return jdbcTemplate.queryForObject(QUERY_UPDATE_EMPLOYEE, BeanPropertyRowMapper.newInstance(Employee.class),
+    public EmployeeDTO updateEmployee(Long id, EmployeeDTO employee) {
+        return jdbcTemplate.queryForObject(QUERY_UPDATE_EMPLOYEE, BeanPropertyRowMapper.newInstance(EmployeeDTO.class),
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getDepartmentId(),
@@ -55,22 +55,22 @@ public class EmployeeDaoImpl implements EmploeeDao {
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        return jdbcTemplate.query(QUERY_GET_ALL_EMPLOYEES, BeanPropertyRowMapper.newInstance(Employee.class));
+    public List<EmployeeDTO> getAllEmployees() {
+        return jdbcTemplate.query(QUERY_GET_ALL_EMPLOYEES, BeanPropertyRowMapper.newInstance(EmployeeDTO.class));
     }
 
     @Override
-    public Employee getEmployeeById(Long id) {
-        return jdbcTemplate.queryForObject(QUERY_GET_EMPLOYEE_BY_ID, BeanPropertyRowMapper.newInstance(Employee.class), id);
+    public EmployeeDTO getEmployeeById(Long id) {
+        return jdbcTemplate.queryForObject(QUERY_GET_EMPLOYEE_BY_ID, BeanPropertyRowMapper.newInstance(EmployeeDTO.class), id);
     }
 
     @Override
-    public List<Employee> findByPartOfFirstOrAndLastName(String firstName, String lastName) {
+    public List<EmployeeDTO> findByPartOfFirstOrAndLastName(String firstName, String lastName) {
         String firstNamePart = "%" + firstName + "%";
         String lastNamePart = "%" + lastName + "%";
         return jdbcTemplate.query(
                 QUERY_GET_EMPLOYEE_BY_PART_OF_CREDENTIALS,
-                BeanPropertyRowMapper.newInstance(Employee.class),
+                BeanPropertyRowMapper.newInstance(EmployeeDTO.class),
                 firstNamePart,
                 lastNamePart);
     }
