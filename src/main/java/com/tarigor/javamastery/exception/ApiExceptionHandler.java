@@ -1,86 +1,47 @@
 package com.tarigor.javamastery.exception;
 
-import com.tarigor.javamastery.rest.error.ApiErrorResponse;
-import com.tarigor.javamastery.rest.error.ResponseEntityBuilder;
-import org.springframework.http.HttpHeaders;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 @RestControllerAdvice
-public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
+@Slf4j
+public class ApiExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Object> entityNotFoundException(ResourceNotFoundException exception) {
-        List<String> details = new ArrayList<>();
-        details.add(exception.getMessage());
-        ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
+    public ApiErrorMessage entityNotFoundException(ResourceNotFoundException exception) {
+        log.error("entityNotFoundException:error -> {}", exception.toString());
+        return new ApiErrorMessage(
                 LocalDateTime.now(),
-                HttpStatus.NOT_FOUND,
                 "Resource Not Found",
-                details);
-        return ResponseEntityBuilder.build(apiErrorResponse);
+                exception.getMessage());
     }
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<?> handleConstraintViolationException(Exception ex) {
-        List<String> details = new ArrayList<>();
-        details.add(ex.getMessage());
-        ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiErrorMessage validationException(MethodArgumentNotValidException exception) {
+        log.error("validationException:error -> {}", exception.getMessage());
+        return new ApiErrorMessage(
                 LocalDateTime.now(),
-                HttpStatus.BAD_REQUEST,
-                "Constraint Violations",
-                details);
-        return ResponseEntityBuilder.build(apiErrorResponse);
-    }
-
-    @Override
-    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
-                                                                  HttpHeaders headers,
-                                                                  HttpStatus status,
-                                                                  WebRequest request) {
-        List<String> details = new ArrayList<>();
-        details.add(ex.getMessage());
-        ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
-                LocalDateTime.now(),
-                HttpStatus.BAD_REQUEST,
-                "Malformed JSON request",
-                details
+                "Validation Error",
+                Objects.requireNonNull(exception.getFieldError()).getDefaultMessage()
         );
-        return ResponseEntityBuilder.build(apiErrorResponse);
     }
 
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                                  HttpHeaders headers,
-                                                                  HttpStatus status,
-                                                                  WebRequest request) {
-        List<String> details = ex.getBindingResult()
-                .getFieldErrors()
-                .stream()
-                .map(fieldError -> fieldError.getObjectName() + " : " + fieldError.getDefaultMessage())
-                .collect(Collectors.toList());
-        ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ApiErrorMessage handleOtherExceptions(Exception exception) {
+        log.error("handleOtherExceptions:error -> {}", exception.getMessage());
+        return new ApiErrorMessage(
                 LocalDateTime.now(),
-                HttpStatus.BAD_REQUEST,
-                "Validation Errors",
-                details
-        );
-        return ResponseEntityBuilder.build(apiErrorResponse);
+                "Internal Server Error Occurred",
+                exception.getMessage());
     }
-
-
 }

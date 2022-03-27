@@ -1,10 +1,10 @@
 package com.tarigor.javamastery.dto;
 
+import com.tarigor.javamastery.dto.vlidation.DateOfBirthConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
@@ -23,7 +23,6 @@ public class EmployeeDTO implements Serializable {
     private Long departmentId;
     private String jobTitle;
     private String gender;
+    @DateOfBirthConstraint(ageLowLimit = 18)
     private Date dateOfBirth;
-    @Min(value = 18, message = "The minimum allowed age is 18 years old")
-    private int age;
 }

@@ -46,7 +46,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeFromDB.setJobTitle(employeeDTO.getJobTitle());
         employeeFromDB.setGender(employeeDTO.getGender());
         employeeFromDB.setDateOfBirth(employeeDTO.getDateOfBirth());
-        employeeFromDB.setAge(employeeDTO.getAge());
         return employeeFromDB;
     }
 
@@ -57,7 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmployeeById(Long id) {
-        return employeeRepository.getEmployeeByEmployeeId(id)
+        return employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("an user with id->%d has been not found", id)));
     }
 
