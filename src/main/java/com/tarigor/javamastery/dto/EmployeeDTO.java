@@ -1,6 +1,6 @@
 package com.tarigor.javamastery.dto;
 
-import com.tarigor.javamastery.dto.vlidation.DateOfBirthConstraint;
+import com.tarigor.javamastery.dto.validation.DateOfBirthConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

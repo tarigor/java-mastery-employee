@@ -1,4 +1,4 @@
-package com.tarigor.javamastery.dto.vlidation;
+package com.tarigor.javamastery.dto.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
