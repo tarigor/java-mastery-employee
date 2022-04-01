@@ -17,5 +17,5 @@ public interface EmployeeService {
 
     Employee getEmployeeById(Long id);
 
-    List<Employee> findByFirstOrAndLastName(Map<String, String> employeeDetailsMap);
+    List<Employee> findByFirstOrAndLastName(String firstName, String lastName);
 }

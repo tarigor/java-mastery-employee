@@ -10,9 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @Slf4j
@@ -29,24 +27,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployee(Long id) {
-        getEmployeeById(id);
-        employeeRepository.deleteAllById(Collections.singleton(id));
+        employeeRepository.delete(getEmployeeById(id));
     }
 
     @Override
     public Employee updateEmployeeData(Long id, EmployeeDTO employeeDTO) {
         Employee employeeFromDB = getEmployeeById(id);
-        return employeeRepository.save(updateEmployeeFromDB(employeeDTO, employeeFromDB));
-    }
-
-    private Employee updateEmployeeFromDB(EmployeeDTO employeeDTO, Employee employeeFromDB) {
-        employeeFromDB.setFirstName(employeeDTO.getFirstName());
-        employeeFromDB.setLastName(employeeDTO.getLastName());
-        employeeFromDB.setDepartmentId(employeeDTO.getDepartmentId());
-        employeeFromDB.setJobTitle(employeeDTO.getJobTitle());
-        employeeFromDB.setGender(employeeDTO.getGender());
-        employeeFromDB.setDateOfBirth(employeeDTO.getDateOfBirth());
-        return employeeFromDB;
+        return employeeRepository.save(EmployeeDTO.convertToEmployeeFromEmployeeDto(employeeDTO,employeeFromDB));
     }
 
     @Override
@@ -61,9 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> findByFirstOrAndLastName(Map<String, String> employeeSearchParams) {
-        String firstName = employeeSearchParams.get("firstName");
-        String lastName = employeeSearchParams.get("lastName");
+    public List<Employee> findByFirstOrAndLastName(String firstName, String lastName) {
         return employeeRepository.findEmployeeByFirstNameContainingAndLastNameContaining(firstName, lastName);
     }
 }

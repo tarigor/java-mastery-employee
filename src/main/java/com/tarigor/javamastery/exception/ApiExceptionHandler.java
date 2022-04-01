@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -26,12 +27,23 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiErrorMessage validationException(MethodArgumentNotValidException exception) {
-        log.error("validationException:error -> {}", exception.getMessage());
+    public ApiErrorMessage methodArgumentValidationException(MethodArgumentNotValidException exception) {
+        log.error("methodArgumentValidationException:error -> {}", exception.getMessage());
         return new ApiErrorMessage(
                 LocalDateTime.now(),
                 "Validation Error",
                 Objects.requireNonNull(exception.getFieldError()).getDefaultMessage()
+        );
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiErrorMessage inputParameterValidationException(ConstraintViolationException exception) {
+        log.error("inputParameterValidationException:error -> {}", exception.getMessage());
+        return new ApiErrorMessage(
+                LocalDateTime.now(),
+                "Validation Error for input parameter",
+                exception.getMessage()
         );
     }
 

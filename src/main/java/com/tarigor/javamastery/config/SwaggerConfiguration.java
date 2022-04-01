@@ -20,7 +20,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .paths(PathSelectors.ant("/employee-management/**"))
+                .paths(PathSelectors.ant("/employees/**"))
                 .build()
                 .useDefaultResponseMessages(false);
     }

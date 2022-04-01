@@ -1,11 +1,13 @@
 package com.tarigor.javamastery.dto;
 
 import com.tarigor.javamastery.dto.validation.DateOfBirthConstraint;
+import com.tarigor.javamastery.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.sql.Date;
@@ -24,5 +26,16 @@ public class EmployeeDTO implements Serializable {
     private String jobTitle;
     private String gender;
     @DateOfBirthConstraint(ageLowLimit = 18)
+    @NotNull
     private Date dateOfBirth;
+
+    public static Employee convertToEmployeeFromEmployeeDto(EmployeeDTO employeeDTO, Employee employeeFromDB){
+        employeeFromDB.setFirstName(employeeDTO.getFirstName());
+        employeeFromDB.setLastName(employeeDTO.getLastName());
+        employeeFromDB.setDepartmentId(employeeDTO.getDepartmentId());
+        employeeFromDB.setJobTitle(employeeDTO.getJobTitle());
+        employeeFromDB.setGender(employeeDTO.getGender());
+        employeeFromDB.setDateOfBirth(employeeDTO.getDateOfBirth());
+        return employeeFromDB;
+    }
 }
