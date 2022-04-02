@@ -1,7 +1,6 @@
 package com.tarigor.javamastery.dto;
 
 import com.tarigor.javamastery.dto.validation.DateOfBirthConstraint;
-import com.tarigor.javamastery.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,13 +8,13 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 import java.sql.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeDTO implements Serializable {
+public class EmployeeDTO {
+    private Long employeeId;
     @NotBlank(message = "First Name presence is mandatory!")
     @Pattern(regexp = "^[A-Z][a-z]{1,18}$", message = "The format of name is not valid:1-Must contain only letters.2-Start with a capital letter.3-The number of letters is at least 2")
     private String firstName;
@@ -28,14 +27,4 @@ public class EmployeeDTO implements Serializable {
     @DateOfBirthConstraint(ageLowLimit = 18)
     @NotNull
     private Date dateOfBirth;
-
-    public static Employee convertToEmployeeFromEmployeeDto(EmployeeDTO employeeDTO, Employee employeeFromDB){
-        employeeFromDB.setFirstName(employeeDTO.getFirstName());
-        employeeFromDB.setLastName(employeeDTO.getLastName());
-        employeeFromDB.setDepartmentId(employeeDTO.getDepartmentId());
-        employeeFromDB.setJobTitle(employeeDTO.getJobTitle());
-        employeeFromDB.setGender(employeeDTO.getGender());
-        employeeFromDB.setDateOfBirth(employeeDTO.getDateOfBirth());
-        return employeeFromDB;
-    }
 }

@@ -3504,3 +3504,312 @@ javax.validation.ConstraintViolationException: getEmployeeById.id: must be above
 09:26:55.131 [SpringApplicationShutdownHook] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Closing JPA EntityManagerFactory for persistence unit 'default'
 09:26:55.139 [SpringApplicationShutdownHook] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown initiated...
 09:27:02.692 [SpringApplicationShutdownHook] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown completed.
+13:36:08.911 [background-preinit] [34mINFO [0;39m o.h.validator.internal.util.Version [employee-management] - HV000001: Hibernate Validator 6.2.2.Final
+13:36:08.929 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Starting JavaMasteryApplication using Java 11.0.11 on igor-virtual-machine with PID 35058 (/home/igor/Documents/project/godel/java-mastery/target/classes started by igor in /home/igor/Documents/project/godel/java-mastery)
+13:36:08.930 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - No active profile set, falling back to 1 default profile: "default"
+13:36:10.630 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+13:36:10.630 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+13:36:10.650 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationExtensionSupport [employee-management] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.tarigor.javamastery.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+13:36:10.651 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
+13:36:10.660 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+13:36:10.661 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+13:36:10.685 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 20 ms. Found 1 JPA repository interfaces.
+13:36:10.972 [main] [34mINFO [0;39m o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [employee-management] - Bean 'appConfiguration' of type [com.tarigor.javamastery.config.AppConfiguration$$EnhancerBySpringCGLIB$$7e9ce22] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+13:36:11.280 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat initialized with port(s): 8080 (http)
+13:36:11.287 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Initializing ProtocolHandler ["http-nio-8080"]
+13:36:11.287 [main] [34mINFO [0;39m o.a.catalina.core.StandardService [employee-management] - Starting service [Tomcat]
+13:36:11.288 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine [employee-management] - Starting Servlet engine: [Apache Tomcat/9.0.58]
+13:36:11.390 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring embedded WebApplicationContext
+13:36:11.390 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext [employee-management] - Root WebApplicationContext: initialization completed in 2331 ms
+13:36:11.699 [main] [34mINFO [0;39m o.h.jpa.internal.util.LogHelper [employee-management] - HHH000204: Processing PersistenceUnitInfo [name: default]
+13:36:11.731 [main] [34mINFO [0;39m org.hibernate.Version [employee-management] - HHH000412: Hibernate ORM core version 5.6.5.Final
+13:36:11.834 [main] [34mINFO [0;39m o.h.annotations.common.Version [employee-management] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+13:36:11.912 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Starting...
+13:36:14.669 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Start completed.
+13:36:14.690 [main] [34mINFO [0;39m org.hibernate.dialect.Dialect [employee-management] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+13:36:16.365 [main] [34mINFO [0;39m o.h.e.t.j.p.i.JtaPlatformInitiator [employee-management] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+13:36:16.379 [main] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+13:36:17.213 [main] [34mINFO [0;39m o.s.b.a.e.web.EndpointLinksResolver [employee-management] - Exposing 1 endpoint(s) beneath base path '/actuator'
+13:36:17.255 [main] [31mWARN [0;39m o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [employee-management] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+13:36:17.378 [main] [34mINFO [0;39m s.d.s.w.PropertySourcedRequestMappingHandlerMapping [employee-management] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+13:36:17.970 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Starting ProtocolHandler ["http-nio-8080"]
+13:36:17.986 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat started on port(s): 8080 (http) with context path ''
+13:36:17.988 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Context refreshed
+13:36:18.002 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Found 1 custom documentation plugin(s)
+13:36:18.034 [main] [34mINFO [0;39m s.d.s.w.s.ApiListingReferenceScanner [employee-management] - Scanning for api listing references
+13:36:18.214 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Started JavaMasteryApplication in 10.168 seconds (JVM running for 11.929)
+13:36:40.077 [http-nio-8080-exec-4] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+13:36:40.080 [http-nio-8080-exec-4] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Initializing Servlet 'dispatcherServlet'
+13:36:40.082 [http-nio-8080-exec-4] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Completed initialization in 1 ms
+13:36:40.512 [http-nio-8080-exec-4] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - addEmployee: the following employeeDTO data received for adding -> EmployeeDTO(firstName=Gena, lastName=Pupkin, departmentId=1, jobTitle=developer, gender=male, dateOfBirth=2000-01-20)
+13:36:40.994 [http-nio-8080-exec-4] [31mWARN [0;39m o.h.e.jdbc.spi.SqlExceptionHelper [employee-management] - SQL Error: 0, SQLState: 23505
+13:36:40.997 [http-nio-8080-exec-4] [1;31mERROR[0;39m o.h.e.jdbc.spi.SqlExceptionHelper [employee-management] - ERROR: duplicate key value violates unique constraint "employee_pkey"
+  Detail: Key (employee_id)=(1) already exists.
+13:36:41.000 [http-nio-8080-exec-4] [34mINFO [0;39m o.h.e.j.b.internal.AbstractBatchImpl [employee-management] - HHH000010: On release of batch it still contained JDBC statements
+13:36:41.125 [http-nio-8080-exec-4] [1;31mERROR[0;39m c.t.j.exception.ApiExceptionHandler [employee-management] - handleOtherExceptions:error -> could not execute statement; SQL [n/a]; constraint [employee_pkey]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+13:37:20.782 [SpringApplicationShutdownHook] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Closing JPA EntityManagerFactory for persistence unit 'default'
+13:37:20.792 [SpringApplicationShutdownHook] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown initiated...
+13:37:31.169 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Starting JavaMasteryApplication using Java 11.0.11 on igor-virtual-machine with PID 35184 (/home/igor/Documents/project/godel/java-mastery/target/classes started by igor in /home/igor/Documents/project/godel/java-mastery)
+13:37:31.171 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - No active profile set, falling back to 1 default profile: "default"
+13:37:31.211 [background-preinit] [34mINFO [0;39m o.h.validator.internal.util.Version [employee-management] - HV000001: Hibernate Validator 6.2.2.Final
+13:37:32.546 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+13:37:32.546 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+13:37:32.566 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationExtensionSupport [employee-management] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.tarigor.javamastery.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+13:37:32.567 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
+13:37:32.575 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+13:37:32.576 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+13:37:32.599 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interfaces.
+13:37:32.856 [main] [34mINFO [0;39m o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [employee-management] - Bean 'appConfiguration' of type [com.tarigor.javamastery.config.AppConfiguration$$EnhancerBySpringCGLIB$$4cca3d47] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+13:37:33.172 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat initialized with port(s): 8080 (http)
+13:37:33.178 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Initializing ProtocolHandler ["http-nio-8080"]
+13:37:33.179 [main] [34mINFO [0;39m o.a.catalina.core.StandardService [employee-management] - Starting service [Tomcat]
+13:37:33.179 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine [employee-management] - Starting Servlet engine: [Apache Tomcat/9.0.58]
+13:37:33.280 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring embedded WebApplicationContext
+13:37:33.280 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext [employee-management] - Root WebApplicationContext: initialization completed in 2068 ms
+13:37:33.559 [main] [34mINFO [0;39m o.h.jpa.internal.util.LogHelper [employee-management] - HHH000204: Processing PersistenceUnitInfo [name: default]
+13:37:33.587 [main] [34mINFO [0;39m org.hibernate.Version [employee-management] - HHH000412: Hibernate ORM core version 5.6.5.Final
+13:37:33.680 [main] [34mINFO [0;39m o.h.annotations.common.Version [employee-management] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+13:37:33.738 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Starting...
+13:37:35.754 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Start completed.
+13:37:35.765 [main] [34mINFO [0;39m org.hibernate.dialect.Dialect [employee-management] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+13:37:36.873 [main] [34mINFO [0;39m o.h.e.t.j.p.i.JtaPlatformInitiator [employee-management] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+13:37:36.882 [main] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+13:37:37.598 [main] [34mINFO [0;39m o.s.b.a.e.web.EndpointLinksResolver [employee-management] - Exposing 1 endpoint(s) beneath base path '/actuator'
+13:37:37.651 [main] [31mWARN [0;39m o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [employee-management] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+13:37:37.786 [main] [34mINFO [0;39m s.d.s.w.PropertySourcedRequestMappingHandlerMapping [employee-management] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+13:37:38.386 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Starting ProtocolHandler ["http-nio-8080"]
+13:37:38.397 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat started on port(s): 8080 (http) with context path ''
+13:37:38.399 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Context refreshed
+13:37:38.411 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Found 1 custom documentation plugin(s)
+13:37:38.439 [main] [34mINFO [0;39m s.d.s.w.s.ApiListingReferenceScanner [employee-management] - Scanning for api listing references
+13:37:38.602 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Started JavaMasteryApplication in 8.221 seconds (JVM running for 9.737)
+13:37:42.258 [http-nio-8080-exec-10] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+13:37:42.259 [http-nio-8080-exec-10] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Initializing Servlet 'dispatcherServlet'
+13:37:42.270 [http-nio-8080-exec-10] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Completed initialization in 10 ms
+13:37:42.568 [http-nio-8080-exec-10] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - addEmployee: the following employeeDTO data received for adding -> EmployeeDTO(firstName=Gena, lastName=Pupkin, departmentId=1, jobTitle=developer, gender=male, dateOfBirth=2000-01-20)
+13:37:42.957 [http-nio-8080-exec-10] [31mWARN [0;39m o.h.e.jdbc.spi.SqlExceptionHelper [employee-management] - SQL Error: 0, SQLState: 23505
+13:37:42.957 [http-nio-8080-exec-10] [1;31mERROR[0;39m o.h.e.jdbc.spi.SqlExceptionHelper [employee-management] - ERROR: duplicate key value violates unique constraint "employee_pkey"
+  Detail: Key (employee_id)=(2) already exists.
+13:37:42.959 [http-nio-8080-exec-10] [34mINFO [0;39m o.h.e.j.b.internal.AbstractBatchImpl [employee-management] - HHH000010: On release of batch it still contained JDBC statements
+13:37:43.078 [http-nio-8080-exec-10] [1;31mERROR[0;39m c.t.j.exception.ApiExceptionHandler [employee-management] - handleOtherExceptions:error -> could not execute statement; SQL [n/a]; constraint [employee_pkey]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+13:38:54.121 [http-nio-8080-exec-9] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - findEmployee: find employee(s) with the such parameters firstName= and lastName= is requested
+13:39:10.421 [http-nio-8080-exec-8] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - addEmployee: the following employeeDTO data received for adding -> EmployeeDTO(firstName=Gena, lastName=Pupkin, departmentId=1, jobTitle=developer, gender=male, dateOfBirth=2000-01-20)
+13:39:10.739 [http-nio-8080-exec-8] [31mWARN [0;39m o.h.e.jdbc.spi.SqlExceptionHelper [employee-management] - SQL Error: 0, SQLState: 23505
+13:39:10.739 [http-nio-8080-exec-8] [1;31mERROR[0;39m o.h.e.jdbc.spi.SqlExceptionHelper [employee-management] - ERROR: duplicate key value violates unique constraint "employee_pkey"
+  Detail: Key (employee_id)=(3) already exists.
+13:39:10.739 [http-nio-8080-exec-8] [34mINFO [0;39m o.h.e.j.b.internal.AbstractBatchImpl [employee-management] - HHH000010: On release of batch it still contained JDBC statements
+13:39:10.904 [http-nio-8080-exec-8] [1;31mERROR[0;39m c.t.j.exception.ApiExceptionHandler [employee-management] - handleOtherExceptions:error -> could not execute statement; SQL [n/a]; constraint [employee_pkey]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+13:40:04.009 [http-nio-8080-exec-1] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - addEmployee: the following employeeDTO data received for adding -> EmployeeDTO(firstName=Gena, lastName=Pupkin, departmentId=1, jobTitle=developer, gender=male, dateOfBirth=2000-01-20)
+13:40:39.966 [http-nio-8080-exec-2] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - addEmployee: the following employeeDTO data received for adding -> EmployeeDTO(firstName=Gena, lastName=Pupkin, departmentId=1, jobTitle=developer, gender=male, dateOfBirth=2000-01-20)
+16:31:18.044 [SpringApplicationShutdownHook] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Closing JPA EntityManagerFactory for persistence unit 'default'
+16:31:18.050 [SpringApplicationShutdownHook] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown initiated...
+16:31:34.654 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Starting JavaMasteryApplication using Java 11.0.11 on igor-virtual-machine with PID 36803 (/home/igor/Documents/project/godel/java-mastery/target/classes started by igor in /home/igor/Documents/project/godel/java-mastery)
+16:31:34.686 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - No active profile set, falling back to 1 default profile: "default"
+16:31:34.731 [background-preinit] [34mINFO [0;39m o.h.validator.internal.util.Version [employee-management] - HV000001: Hibernate Validator 6.2.2.Final
+16:31:36.912 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+16:31:36.913 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+16:31:36.945 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationExtensionSupport [employee-management] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.tarigor.javamastery.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+16:31:36.946 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 28 ms. Found 0 JDBC repository interfaces.
+16:31:36.959 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+16:31:36.960 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+16:31:36.987 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 22 ms. Found 1 JPA repository interfaces.
+16:31:37.338 [main] [34mINFO [0;39m o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [employee-management] - Bean 'appConfiguration' of type [com.tarigor.javamastery.config.AppConfiguration$$EnhancerBySpringCGLIB$$b3b9453c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+16:31:37.775 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat initialized with port(s): 8080 (http)
+16:31:37.783 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Initializing ProtocolHandler ["http-nio-8080"]
+16:31:37.784 [main] [34mINFO [0;39m o.a.catalina.core.StandardService [employee-management] - Starting service [Tomcat]
+16:31:37.784 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine [employee-management] - Starting Servlet engine: [Apache Tomcat/9.0.58]
+16:31:37.895 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring embedded WebApplicationContext
+16:31:37.896 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext [employee-management] - Root WebApplicationContext: initialization completed in 2924 ms
+16:31:38.280 [main] [34mINFO [0;39m o.h.jpa.internal.util.LogHelper [employee-management] - HHH000204: Processing PersistenceUnitInfo [name: default]
+16:31:38.325 [main] [34mINFO [0;39m org.hibernate.Version [employee-management] - HHH000412: Hibernate ORM core version 5.6.5.Final
+16:31:38.430 [main] [34mINFO [0;39m o.h.annotations.common.Version [employee-management] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+16:31:38.525 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Starting...
+16:31:40.278 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Start completed.
+16:31:40.294 [main] [34mINFO [0;39m org.hibernate.dialect.Dialect [employee-management] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+16:31:41.709 [main] [34mINFO [0;39m o.h.e.t.j.p.i.JtaPlatformInitiator [employee-management] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+16:31:41.719 [main] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+16:31:42.711 [main] [34mINFO [0;39m o.s.b.a.e.web.EndpointLinksResolver [employee-management] - Exposing 1 endpoint(s) beneath base path '/actuator'
+16:31:42.773 [main] [31mWARN [0;39m o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [employee-management] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+16:31:43.004 [main] [34mINFO [0;39m s.d.s.w.PropertySourcedRequestMappingHandlerMapping [employee-management] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+16:31:43.718 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Starting ProtocolHandler ["http-nio-8080"]
+16:31:43.735 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat started on port(s): 8080 (http) with context path ''
+16:31:43.737 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Context refreshed
+16:31:43.765 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Found 1 custom documentation plugin(s)
+16:31:43.847 [main] [34mINFO [0;39m s.d.s.w.s.ApiListingReferenceScanner [employee-management] - Scanning for api listing references
+16:31:44.096 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Started JavaMasteryApplication in 10.584 seconds (JVM running for 12.539)
+16:31:50.918 [http-nio-8080-exec-8] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+16:31:50.920 [http-nio-8080-exec-8] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Initializing Servlet 'dispatcherServlet'
+16:31:50.925 [http-nio-8080-exec-8] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Completed initialization in 4 ms
+16:31:51.805 [http-nio-8080-exec-8] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - addEmployee: the following employeeDTO data received for adding -> EmployeeDTO(firstName=Gena, lastName=Pupkin, departmentId=1, jobTitle=developer, gender=male, dateOfBirth=2000-01-20)
+16:43:33.810 [SpringApplicationShutdownHook] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Closing JPA EntityManagerFactory for persistence unit 'default'
+16:43:33.814 [SpringApplicationShutdownHook] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown initiated...
+16:43:36.205 [SpringApplicationShutdownHook] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown completed.
+16:43:47.320 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Starting JavaMasteryApplication using Java 11.0.11 on igor-virtual-machine with PID 37173 (/home/igor/Documents/project/godel/java-mastery/target/classes started by igor in /home/igor/Documents/project/godel/java-mastery)
+16:43:47.333 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - No active profile set, falling back to 1 default profile: "default"
+16:43:47.355 [background-preinit] [34mINFO [0;39m o.h.validator.internal.util.Version [employee-management] - HV000001: Hibernate Validator 6.2.2.Final
+16:43:49.031 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+16:43:49.035 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+16:43:49.064 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationExtensionSupport [employee-management] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.tarigor.javamastery.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+16:43:49.065 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 18 ms. Found 0 JDBC repository interfaces.
+16:43:49.078 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+16:43:49.079 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+16:43:49.109 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 26 ms. Found 1 JPA repository interfaces.
+16:43:49.362 [main] [34mINFO [0;39m o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [employee-management] - Bean 'appConfiguration' of type [com.tarigor.javamastery.config.AppConfiguration$$EnhancerBySpringCGLIB$$217b301c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+16:43:49.723 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat initialized with port(s): 8080 (http)
+16:43:49.729 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Initializing ProtocolHandler ["http-nio-8080"]
+16:43:49.730 [main] [34mINFO [0;39m o.a.catalina.core.StandardService [employee-management] - Starting service [Tomcat]
+16:43:49.730 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine [employee-management] - Starting Servlet engine: [Apache Tomcat/9.0.58]
+16:43:49.813 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring embedded WebApplicationContext
+16:43:49.814 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext [employee-management] - Root WebApplicationContext: initialization completed in 2305 ms
+16:43:50.136 [main] [34mINFO [0;39m o.h.jpa.internal.util.LogHelper [employee-management] - HHH000204: Processing PersistenceUnitInfo [name: default]
+16:43:50.168 [main] [34mINFO [0;39m org.hibernate.Version [employee-management] - HHH000412: Hibernate ORM core version 5.6.5.Final
+16:43:50.288 [main] [34mINFO [0;39m o.h.annotations.common.Version [employee-management] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+16:43:50.358 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Starting...
+16:43:52.186 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Start completed.
+16:43:52.197 [main] [34mINFO [0;39m org.hibernate.dialect.Dialect [employee-management] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+16:43:53.309 [main] [34mINFO [0;39m o.h.e.t.j.p.i.JtaPlatformInitiator [employee-management] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+16:43:53.323 [main] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+16:43:54.060 [main] [34mINFO [0;39m o.s.b.a.e.web.EndpointLinksResolver [employee-management] - Exposing 1 endpoint(s) beneath base path '/actuator'
+16:43:54.102 [main] [31mWARN [0;39m o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [employee-management] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+16:43:54.247 [main] [34mINFO [0;39m s.d.s.w.PropertySourcedRequestMappingHandlerMapping [employee-management] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+16:43:54.872 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Starting ProtocolHandler ["http-nio-8080"]
+16:43:54.883 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat started on port(s): 8080 (http) with context path ''
+16:43:54.884 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Context refreshed
+16:43:54.897 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Found 1 custom documentation plugin(s)
+16:43:54.935 [main] [34mINFO [0;39m s.d.s.w.s.ApiListingReferenceScanner [employee-management] - Scanning for api listing references
+16:43:55.102 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Started JavaMasteryApplication in 8.823 seconds (JVM running for 10.468)
+16:44:33.357 [http-nio-8080-exec-2] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+16:44:33.363 [http-nio-8080-exec-2] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Initializing Servlet 'dispatcherServlet'
+16:44:33.366 [http-nio-8080-exec-2] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Completed initialization in 1 ms
+16:44:33.740 [http-nio-8080-exec-2] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - findEmployee: find employee(s) with the such parameters firstName=a and lastName=a is requested
+16:44:40.845 [http-nio-8080-exec-4] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - findEmployee: find employee(s) with the such parameters firstName=a and lastName= is requested
+20:42:09.643 [SpringApplicationShutdownHook] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Closing JPA EntityManagerFactory for persistence unit 'default'
+20:42:09.647 [SpringApplicationShutdownHook] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown initiated...
+20:42:58.824 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Starting JavaMasteryApplication using Java 11.0.11 on igor-virtual-machine with PID 38896 (/home/igor/Documents/project/godel/java-mastery/target/classes started by igor in /home/igor/Documents/project/godel/java-mastery)
+20:42:58.828 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - No active profile set, falling back to 1 default profile: "default"
+20:42:58.830 [background-preinit] [34mINFO [0;39m o.h.validator.internal.util.Version [employee-management] - HV000001: Hibernate Validator 6.2.2.Final
+20:43:00.649 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+20:43:00.650 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+20:43:00.671 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationExtensionSupport [employee-management] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.tarigor.javamastery.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+20:43:00.672 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 17 ms. Found 0 JDBC repository interfaces.
+20:43:00.680 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+20:43:00.681 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+20:43:00.705 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interfaces.
+20:43:00.992 [main] [34mINFO [0;39m o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [employee-management] - Bean 'appConfiguration' of type [com.tarigor.javamastery.config.AppConfiguration$$EnhancerBySpringCGLIB$$cb2b7a43] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+20:43:01.329 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat initialized with port(s): 8080 (http)
+20:43:01.336 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Initializing ProtocolHandler ["http-nio-8080"]
+20:43:01.337 [main] [34mINFO [0;39m o.a.catalina.core.StandardService [employee-management] - Starting service [Tomcat]
+20:43:01.337 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine [employee-management] - Starting Servlet engine: [Apache Tomcat/9.0.58]
+20:43:01.443 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring embedded WebApplicationContext
+20:43:01.443 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext [employee-management] - Root WebApplicationContext: initialization completed in 2462 ms
+20:43:01.738 [main] [34mINFO [0;39m o.h.jpa.internal.util.LogHelper [employee-management] - HHH000204: Processing PersistenceUnitInfo [name: default]
+20:43:01.780 [main] [34mINFO [0;39m org.hibernate.Version [employee-management] - HHH000412: Hibernate ORM core version 5.6.5.Final
+20:43:01.905 [main] [34mINFO [0;39m o.h.annotations.common.Version [employee-management] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+20:43:01.971 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Starting...
+20:43:03.923 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Start completed.
+20:43:03.933 [main] [34mINFO [0;39m org.hibernate.dialect.Dialect [employee-management] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+20:43:05.178 [main] [34mINFO [0;39m o.h.e.t.j.p.i.JtaPlatformInitiator [employee-management] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+20:43:05.195 [main] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:43:05.563 [main] [31mWARN [0;39m o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [employee-management] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'employeeController' defined in file [/home/igor/Documents/project/godel/java-mastery/target/classes/com/tarigor/javamastery/rest/EmployeeController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'employeeServiceImpl' defined in file [/home/igor/Documents/project/godel/java-mastery/target/classes/com/tarigor/javamastery/service/impl/EmployeeServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.tarigor.javamastery.service.EmployeeServiceUtil' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+20:43:05.564 [main] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Closing JPA EntityManagerFactory for persistence unit 'default'
+20:43:05.565 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown initiated...
+20:43:06.873 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown completed.
+20:43:06.885 [main] [34mINFO [0;39m o.a.catalina.core.StandardService [employee-management] - Stopping service [Tomcat]
+20:43:06.929 [main] [34mINFO [0;39m o.s.b.a.l.ConditionEvaluationReportLoggingListener [employee-management] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+20:43:06.978 [main] [1;31mERROR[0;39m o.s.b.d.LoggingFailureAnalysisReporter [employee-management] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 1 of constructor in com.tarigor.javamastery.service.impl.EmployeeServiceImpl required a bean of type 'com.tarigor.javamastery.service.EmployeeServiceUtil' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.tarigor.javamastery.service.EmployeeServiceUtil' in your configuration.
+
+20:52:42.249 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Starting JavaMasteryApplication using Java 11.0.11 on igor-virtual-machine with PID 39077 (/home/igor/Documents/project/godel/java-mastery/target/classes started by igor in /home/igor/Documents/project/godel/java-mastery)
+20:52:42.256 [background-preinit] [34mINFO [0;39m o.h.validator.internal.util.Version [employee-management] - HV000001: Hibernate Validator 6.2.2.Final
+20:52:42.259 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - No active profile set, falling back to 1 default profile: "default"
+20:52:43.900 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+20:52:43.901 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+20:52:43.920 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationExtensionSupport [employee-management] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.tarigor.javamastery.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+20:52:43.921 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 16 ms. Found 0 JDBC repository interfaces.
+20:52:43.929 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+20:52:43.929 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+20:52:43.952 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 18 ms. Found 1 JPA repository interfaces.
+20:52:44.227 [main] [34mINFO [0;39m o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [employee-management] - Bean 'appConfiguration' of type [com.tarigor.javamastery.config.AppConfiguration$$EnhancerBySpringCGLIB$$dadc3bd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+20:52:44.584 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat initialized with port(s): 8080 (http)
+20:52:44.591 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Initializing ProtocolHandler ["http-nio-8080"]
+20:52:44.592 [main] [34mINFO [0;39m o.a.catalina.core.StandardService [employee-management] - Starting service [Tomcat]
+20:52:44.592 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine [employee-management] - Starting Servlet engine: [Apache Tomcat/9.0.58]
+20:52:44.668 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring embedded WebApplicationContext
+20:52:44.669 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext [employee-management] - Root WebApplicationContext: initialization completed in 2210 ms
+20:52:44.989 [main] [34mINFO [0;39m o.h.jpa.internal.util.LogHelper [employee-management] - HHH000204: Processing PersistenceUnitInfo [name: default]
+20:52:45.017 [main] [34mINFO [0;39m org.hibernate.Version [employee-management] - HHH000412: Hibernate ORM core version 5.6.5.Final
+20:52:45.101 [main] [34mINFO [0;39m o.h.annotations.common.Version [employee-management] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+20:52:45.166 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Starting...
+20:52:47.241 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Start completed.
+20:52:47.264 [main] [34mINFO [0;39m org.hibernate.dialect.Dialect [employee-management] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+20:52:48.448 [main] [34mINFO [0;39m o.h.e.t.j.p.i.JtaPlatformInitiator [employee-management] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+20:52:48.461 [main] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:52:49.140 [main] [34mINFO [0;39m o.s.b.a.e.web.EndpointLinksResolver [employee-management] - Exposing 1 endpoint(s) beneath base path '/actuator'
+20:52:49.188 [main] [31mWARN [0;39m o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [employee-management] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20:52:49.294 [main] [34mINFO [0;39m s.d.s.w.PropertySourcedRequestMappingHandlerMapping [employee-management] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+20:52:49.852 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Starting ProtocolHandler ["http-nio-8080"]
+20:52:49.871 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat started on port(s): 8080 (http) with context path ''
+20:52:49.872 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Context refreshed
+20:52:49.884 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Found 1 custom documentation plugin(s)
+20:52:49.909 [main] [34mINFO [0;39m s.d.s.w.s.ApiListingReferenceScanner [employee-management] - Scanning for api listing references
+20:52:50.121 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Started JavaMasteryApplication in 8.645 seconds (JVM running for 9.835)
+21:47:43.654 [http-nio-8080-exec-1] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+21:47:43.659 [http-nio-8080-exec-1] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Initializing Servlet 'dispatcherServlet'
+21:47:43.667 [http-nio-8080-exec-1] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Completed initialization in 7 ms
+21:47:43.966 [http-nio-8080-exec-1] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - findEmployee: find employee(s) with the such parameters firstName=a and lastName= is requested
+21:47:55.932 [http-nio-8080-exec-4] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - addEmployee: the following employeeDTO data received for adding -> EmployeeDTO(firstName=Gena, lastName=Pupkin, departmentId=1, jobTitle=developer, gender=male, dateOfBirth=2000-01-20)
+22:30:50.645 [http-nio-8080-exec-7] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - findEmployee: find employee(s) with the such parameters firstName= and lastName= is requested
+22:33:10.775 [SpringApplicationShutdownHook] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Closing JPA EntityManagerFactory for persistence unit 'default'
+22:33:10.783 [SpringApplicationShutdownHook] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Shutdown initiated...
+22:33:22.707 [background-preinit] [34mINFO [0;39m o.h.validator.internal.util.Version [employee-management] - HV000001: Hibernate Validator 6.2.2.Final
+22:33:22.705 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Starting JavaMasteryApplication using Java 11.0.11 on igor-virtual-machine with PID 40009 (/home/igor/Documents/project/godel/java-mastery/target/classes started by igor in /home/igor/Documents/project/godel/java-mastery)
+22:33:22.730 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - No active profile set, falling back to 1 default profile: "default"
+22:33:24.545 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+22:33:24.546 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+22:33:24.567 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationExtensionSupport [employee-management] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.tarigor.javamastery.repository.EmployeeRepository. If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+22:33:24.568 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 18 ms. Found 0 JDBC repository interfaces.
+22:33:24.576 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Multiple Spring Data modules found, entering strict repository configuration mode!
+22:33:24.576 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+22:33:24.600 [main] [34mINFO [0;39m o.s.d.r.c.RepositoryConfigurationDelegate [employee-management] - Finished Spring Data repository scanning in 20 ms. Found 1 JPA repository interfaces.
+22:33:24.855 [main] [34mINFO [0;39m o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [employee-management] - Bean 'appConfiguration' of type [com.tarigor.javamastery.config.AppConfiguration$$EnhancerBySpringCGLIB$$78fedd01] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+22:33:25.166 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat initialized with port(s): 8080 (http)
+22:33:25.172 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Initializing ProtocolHandler ["http-nio-8080"]
+22:33:25.172 [main] [34mINFO [0;39m o.a.catalina.core.StandardService [employee-management] - Starting service [Tomcat]
+22:33:25.173 [main] [34mINFO [0;39m o.a.catalina.core.StandardEngine [employee-management] - Starting Servlet engine: [Apache Tomcat/9.0.58]
+22:33:25.238 [main] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring embedded WebApplicationContext
+22:33:25.239 [main] [34mINFO [0;39m o.s.b.w.s.c.ServletWebServerApplicationContext [employee-management] - Root WebApplicationContext: initialization completed in 2356 ms
+22:33:25.534 [main] [34mINFO [0;39m o.h.jpa.internal.util.LogHelper [employee-management] - HHH000204: Processing PersistenceUnitInfo [name: default]
+22:33:25.575 [main] [34mINFO [0;39m org.hibernate.Version [employee-management] - HHH000412: Hibernate ORM core version 5.6.5.Final
+22:33:25.657 [main] [34mINFO [0;39m o.h.annotations.common.Version [employee-management] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+22:33:25.721 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Starting...
+22:33:27.584 [main] [34mINFO [0;39m com.zaxxer.hikari.HikariDataSource [employee-management] - HikariPool-1 - Start completed.
+22:33:27.600 [main] [34mINFO [0;39m org.hibernate.dialect.Dialect [employee-management] - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+22:33:28.712 [main] [34mINFO [0;39m o.h.e.t.j.p.i.JtaPlatformInitiator [employee-management] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22:33:28.723 [main] [34mINFO [0;39m o.s.o.j.LocalContainerEntityManagerFactoryBean [employee-management] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+22:33:29.403 [main] [34mINFO [0;39m o.s.b.a.e.web.EndpointLinksResolver [employee-management] - Exposing 1 endpoint(s) beneath base path '/actuator'
+22:33:29.437 [main] [31mWARN [0;39m o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [employee-management] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:33:29.610 [main] [34mINFO [0;39m s.d.s.w.PropertySourcedRequestMappingHandlerMapping [employee-management] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+22:33:30.159 [main] [34mINFO [0;39m o.a.coyote.http11.Http11NioProtocol [employee-management] - Starting ProtocolHandler ["http-nio-8080"]
+22:33:30.169 [main] [34mINFO [0;39m o.s.b.w.e.tomcat.TomcatWebServer [employee-management] - Tomcat started on port(s): 8080 (http) with context path ''
+22:33:30.170 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Context refreshed
+22:33:30.181 [main] [34mINFO [0;39m s.d.s.w.p.DocumentationPluginsBootstrapper [employee-management] - Found 1 custom documentation plugin(s)
+22:33:30.208 [main] [34mINFO [0;39m s.d.s.w.s.ApiListingReferenceScanner [employee-management] - Scanning for api listing references
+22:33:30.496 [main] [34mINFO [0;39m c.t.j.JavaMasteryApplication [employee-management] - Started JavaMasteryApplication in 8.795 seconds (JVM running for 10.366)
+22:33:43.286 [http-nio-8080-exec-2] [34mINFO [0;39m o.a.c.c.C.[Tomcat].[localhost].[/] [employee-management] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:33:43.286 [http-nio-8080-exec-2] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Initializing Servlet 'dispatcherServlet'
+22:33:43.288 [http-nio-8080-exec-2] [34mINFO [0;39m o.s.web.servlet.DispatcherServlet [employee-management] - Completed initialization in 1 ms
+22:33:43.418 [http-nio-8080-exec-2] [34mINFO [0;39m c.t.j.rest.EmployeeController [employee-management] - findEmployee: find employee(s) with the such parameters firstName= and lastName= is requested

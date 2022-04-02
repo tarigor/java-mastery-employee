@@ -32,7 +32,7 @@ public class EmployeeController {
             @ApiResponse(code = 200, message = "${addEmployee.message.200}", response = EmployeeDTO.class),
             @ApiResponse(code = 500, message = "${addEmployee.message.500}")}
     )
-    public Employee addEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
+    public EmployeeDTO addEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
         log.info("addEmployee: the following employeeDTO data received for adding -> {}", employeeDTO.toString());
         return employeeService.addEmployee(employeeDTO);
     }
@@ -57,7 +57,7 @@ public class EmployeeController {
             @ApiResponse(code = 404, message = "updateEmployeeData.message.404"),
             @ApiResponse(code = 500, message = "updateEmployeeData.message.500")}
     )
-    public Employee updateEmployeeData(@PathVariable @Min(0) Long id, @Valid @RequestBody EmployeeDTO employeeDTO) {
+    public EmployeeDTO updateEmployeeData(@PathVariable @Min(0) Long id, @Valid @RequestBody EmployeeDTO employeeDTO) {
         log.info("updateEmployee: the following data of employee with id -> {} requested to be updated -> {}", id, employeeDTO);
         return employeeService.updateEmployeeData(id, employeeDTO);
     }
@@ -69,7 +69,7 @@ public class EmployeeController {
             @ApiResponse(code = 404, message = "An error occurred while getting employee by id"),
             @ApiResponse(code = 500, message = "An error occurred on the server side")}
     )
-    public Employee getEmployeeById(@PathVariable @Min(value = 1, message = "must be above 0") Long id) {
+    public EmployeeDTO getEmployeeById(@PathVariable @Min(value = 1, message = "must be above 0") Long id) {
         log.info("getEmployeeById: the following data of employee with id -> {} was requested", id);
         return employeeService.getEmployeeById(id);
     }
@@ -80,7 +80,7 @@ public class EmployeeController {
             @ApiResponse(code = 200, message = "Successful of getting employee by request parameters", response = Employee.class),
             @ApiResponse(code = 500, message = "An error occurred on the server side")}
     )
-    public List<Employee> findEmployee(
+    public List<EmployeeDTO> findEmployee(
             @RequestParam(required = false, defaultValue = "") @ApiParam String firstName,
             @RequestParam(required = false, defaultValue = "") @ApiParam String lastName) {
         log.info("findEmployee: find employee(s) with the such parameters firstName={} and lastName={} is requested", firstName, lastName);

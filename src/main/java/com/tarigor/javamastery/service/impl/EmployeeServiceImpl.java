@@ -1,16 +1,17 @@
 package com.tarigor.javamastery.service.impl;
 
 import com.tarigor.javamastery.dto.EmployeeDTO;
-import com.tarigor.javamastery.entity.Employee;
 import com.tarigor.javamastery.exception.ResourceNotFoundException;
 import com.tarigor.javamastery.repository.EmployeeRepository;
 import com.tarigor.javamastery.service.EmployeeService;
+import com.tarigor.javamastery.service.EmployeeServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -18,37 +19,43 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
-    private final ModelMapper modelMapper;
+    private final EmployeeServiceUtil employeeServiceUtil;
 
     @Override
-    public Employee addEmployee(EmployeeDTO employeeDTO) {
-        return employeeRepository.save(modelMapper.map(employeeDTO, Employee.class));
+    public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
+        return employeeServiceUtil.convertFromEntityToDto(employeeRepository.save(employeeServiceUtil.convertFromDtoToEntity(employeeDTO)));
     }
 
     @Override
     public void deleteEmployee(Long id) {
-        employeeRepository.delete(getEmployeeById(id));
+        employeeRepository.delete(employeeServiceUtil.convertFromDtoToEntity(getEmployeeById(id)));
     }
 
     @Override
-    public Employee updateEmployeeData(Long id, EmployeeDTO employeeDTO) {
-        Employee employeeFromDB = getEmployeeById(id);
-        return employeeRepository.save(EmployeeDTO.convertToEmployeeFromEmployeeDto(employeeDTO,employeeFromDB));
+    public EmployeeDTO updateEmployeeData(Long id, EmployeeDTO employeeDTO) {
+        EmployeeDTO employeeFromDB = getEmployeeById(id);
+        return employeeServiceUtil.convertFromEntityToDto(employeeRepository.save(employeeServiceUtil.convertFromDtoToEntity(employeeFromDB)));
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getAllEmployees() {
+        return employeeRepository.findAll()
+                .stream()
+                .map(employeeServiceUtil::convertFromEntityToDto)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
-    public Employee getEmployeeById(Long id) {
-        return employeeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("an user with id->%d has been not found", id)));
+    public EmployeeDTO getEmployeeById(Long id) {
+        return employeeServiceUtil.convertFromEntityToDto(employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("an user with id->%d has been not found", id))));
     }
 
     @Override
-    public List<Employee> findByFirstOrAndLastName(String firstName, String lastName) {
-        return employeeRepository.findEmployeeByFirstNameContainingAndLastNameContaining(firstName, lastName);
+    public List<EmployeeDTO> findByFirstOrAndLastName(String firstName, String lastName) {
+        return employeeRepository.findEmployeeByFirstNameContainingAndLastNameContaining(firstName, lastName)
+                .stream()
+                .map(employeeServiceUtil::convertFromEntityToDto)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }
