@@ -1,5 +1,6 @@
 package com.tarigor.javamastery.config;
 
+import com.fasterxml.classmate.TypeResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -16,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @PropertySource("classpath:swagger.properties")
 public class SwaggerConfiguration {
     @Bean
-    public Docket employeeApi() {
+    public Docket employeeApi(TypeResolver resolver) {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()

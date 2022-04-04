@@ -3,10 +3,8 @@ package com.tarigor.javamastery.rest;
 import com.tarigor.javamastery.dto.EmployeeDTO;
 import com.tarigor.javamastery.entity.Employee;
 import com.tarigor.javamastery.service.EmployeeService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import com.tarigor.javamastery.service.impl.EmployeeFilterServiceImpl;
+import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "employees")
@@ -25,6 +24,7 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+    private final EmployeeFilterServiceImpl employeeFilterService;
 
     @PostMapping
     @ApiOperation(value = "${add.employee.value}", notes = "${add.employee.notes}")
@@ -80,11 +80,15 @@ public class EmployeeController {
             @ApiResponse(code = 200, message = "Successful of getting employee by request parameters", response = Employee.class),
             @ApiResponse(code = 500, message = "An error occurred on the server side")}
     )
-    public List<EmployeeDTO> findEmployee(
-            @RequestParam(required = false, defaultValue = "") @ApiParam String firstName,
-            @RequestParam(required = false, defaultValue = "") @ApiParam String lastName) {
-        log.info("findEmployee: find employee(s) with the such parameters firstName={} and lastName={} is requested", firstName, lastName);
-        return employeeService.findByFirstOrAndLastName(firstName, lastName);
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "firstName", value = "enter a first name (not mandatory)", dataTypeClass = Integer.class, paramType = "query"),
+            @ApiImplicitParam(name = "lastName", value = "enter a last name (not mandatory)", dataTypeClass = Integer.class, paramType = "query"),
+            @ApiImplicitParam(name = "departmentId", value = "enter a department ID (not mandatory)", dataTypeClass = Long.class, paramType = "query"),
+            @ApiImplicitParam(name = "jobTitle", value = "enter a job title (not mandatory)", dataTypeClass = String.class, paramType = "query"),
+            @ApiImplicitParam(name = "gender", value = "enter a gender m/f (not mandatory)", dataTypeClass = String.class, paramType = "query")
+    })
+    public List<EmployeeDTO> findEmployees(@RequestParam @ApiParam(hidden = true) Map<String, Object> filterParameters) {
+        filterParameters.forEach((key, value) -> log.info("findEmployee:the following parameter name={} with value={} was requested to search an employee", key, value));
+        return employeeFilterService.findAll(filterParameters);
     }
-
 }

@@ -47,13 +47,24 @@ public class ApiExceptionHandler {
         );
     }
 
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ApiErrorMessage handleOtherExceptions(Exception exception) {
-        log.error("handleOtherExceptions:error -> {}", exception.getMessage());
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiErrorMessage inputParameterNameException(IllegalArgumentException exception) {
+        log.error("inputParameterNameException:error -> {}", exception.getMessage());
         return new ApiErrorMessage(
                 LocalDateTime.now(),
-                "Internal Server Error Occurred",
-                exception.getMessage());
+                "Wrong input parameter name",
+                exception.getMessage()
+        );
     }
+
+//    @ExceptionHandler(Exception.class)
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    public ApiErrorMessage handleOtherExceptions(Exception exception) {
+//        log.error("handleOtherExceptions:error -> {}", exception.getMessage());
+//        return new ApiErrorMessage(
+//                LocalDateTime.now(),
+//                "Internal Server Error Occurred",
+//                exception.getMessage());
+//    }
 }

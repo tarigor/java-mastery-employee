@@ -7,6 +7,7 @@ import com.tarigor.javamastery.service.EmployeeService;
 import com.tarigor.javamastery.service.EmployeeServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDTO updateEmployeeData(Long id, EmployeeDTO employeeDTO) {
         EmployeeDTO employeeFromDB = getEmployeeById(id);
+        BeanUtils.copyProperties(employeeDTO, employeeFromDB);
         return employeeServiceUtil.convertFromEntityToDto(employeeRepository.save(employeeServiceUtil.convertFromDtoToEntity(employeeFromDB)));
     }
 

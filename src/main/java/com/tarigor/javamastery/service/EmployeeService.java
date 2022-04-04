@@ -16,4 +16,5 @@ public interface EmployeeService {
     EmployeeDTO getEmployeeById(Long id);
 
     List<EmployeeDTO> findByFirstOrAndLastName(String firstName, String lastName);
+
 }
