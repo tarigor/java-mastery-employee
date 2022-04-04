@@ -26,7 +26,7 @@ public class EmployeeFilterServiceImpl implements EmployeeFilterService {
     @Override
     public List<EmployeeDTO> findAll(Map<String, Object> filterParameters) {
         if (!filterParameters.isEmpty()) {
-            return employeeRepositorySpec.findAll(getSpecification(filterParameters))
+            return employeeRepositorySpec.findAll(buildSpecification(filterParameters))
                     .stream()
                     .map(employeeServiceUtil::convertFromEntityToDto)
                     .collect(Collectors.toCollection(ArrayList::new));
@@ -48,44 +48,17 @@ public class EmployeeFilterServiceImpl implements EmployeeFilterService {
         }
     }
 
-    private Specification<Employee> getSpecification(Map<String, Object> filterParameters) {
-        List<String> keys = new ArrayList<>(filterParameters.keySet());
-        switch (filterParameters.size()) {
-            case 1:
-                log.info("filter by 1 parameter has proceeded");
-                return Specification.where(getByParameter(keys.get(0), filterParameters.get(keys.get(0))));
-            case 2:
-                log.info("filter by 2 parameters has proceeded");
-                return Specification.where(
-                        getByParameter(keys.get(0), filterParameters.get(keys.get(0)))
-                                .and(getByParameter(keys.get(1), filterParameters.get(keys.get(1))))
-                );
-            case 3:
-                log.info("filter by 3 parameters has proceeded");
-                return Specification.where(
-                        getByParameter(keys.get(0), filterParameters.get(keys.get(0)))
-                                .and(getByParameter(keys.get(1), filterParameters.get(keys.get(1))))
-                                .and(getByParameter(keys.get(2), filterParameters.get(keys.get(2))))
-                );
-            case 4:
-                log.info("filter by 4 parameters has proceeded");
-                return Specification.where(
-                        getByParameter(keys.get(0), filterParameters.get(keys.get(0)))
-                                .and(getByParameter(keys.get(1), filterParameters.get(keys.get(1))))
-                                .and(getByParameter(keys.get(2), filterParameters.get(keys.get(2))))
-                                .and(getByParameter(keys.get(3), filterParameters.get(keys.get(3))))
-                );
-            case 5:
-                log.info("filter by 5 parameters has proceeded");
-                return Specification.where(
-                        getByParameter(keys.get(0), filterParameters.get(keys.get(0)))
-                                .and(getByParameter(keys.get(1), filterParameters.get(keys.get(1))))
-                                .and(getByParameter(keys.get(2), filterParameters.get(keys.get(2))))
-                                .and(getByParameter(keys.get(3), filterParameters.get(keys.get(3))))
-                                .and(getByParameter(keys.get(4), filterParameters.get(keys.get(4))))
-                );
-            default:
-                throw new RuntimeException("the maximum count of the filtering parameters are exceeded. Should be not more than 5.");
+    private Specification<Employee> buildSpecification(Map<String, Object> map) {
+        List<String> keys = new ArrayList<>(map.keySet());
+        Specification<Employee> specification = Specification.where(getByParameter(keys.get(0), map.get(keys.get(0))));
+        if (map.size() > 1) {
+            for (int i = map.size() - 1; i < map.size(); i++) {
+                specification = specification.and(getByParameter(keys.get(i), map.get(keys.get(i))));
+            }
         }
+        if (map.size() > 5) {
+            throw new UnsupportedOperationException("the maximum count of the filtering parameters are exceeded. Should be not more than 5.");
+        }
+        return specification;
     }
 }

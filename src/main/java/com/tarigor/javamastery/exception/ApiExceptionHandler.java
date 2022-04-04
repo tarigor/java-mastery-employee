@@ -58,13 +58,13 @@ public class ApiExceptionHandler {
         );
     }
 
-//    @ExceptionHandler(Exception.class)
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    public ApiErrorMessage handleOtherExceptions(Exception exception) {
-//        log.error("handleOtherExceptions:error -> {}", exception.getMessage());
-//        return new ApiErrorMessage(
-//                LocalDateTime.now(),
-//                "Internal Server Error Occurred",
-//                exception.getMessage());
-//    }
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ApiErrorMessage handleOtherExceptions(Exception exception) {
+        log.error("handleOtherExceptions:error -> {}", exception.getMessage());
+        return new ApiErrorMessage(
+                LocalDateTime.now(),
+                "Internal Server Error Occurred",
+                exception.getMessage());
+    }
 }
