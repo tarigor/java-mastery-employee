@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeDTO {
+public class EmployeeDTO implements Serializable {
     private Long employeeId;
     @NotBlank(message = "First Name presence is mandatory!")
     @Pattern(regexp = "^[A-Z][a-z]{1,18}$", message = "The format of name is not valid:1-Must contain only letters.2-Start with a capital letter.3-The number of letters is at least 2")

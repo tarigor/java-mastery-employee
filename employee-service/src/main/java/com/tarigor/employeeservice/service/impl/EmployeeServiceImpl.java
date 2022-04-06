@@ -1,5 +1,6 @@
 package com.tarigor.employeeservice.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tarigor.employeeservice.dto.EmployeeDTO;
 import com.tarigor.employeeservice.exception.ResourceNotFoundException;
 import com.tarigor.employeeservice.repository.EmployeeRepository;
@@ -8,6 +9,7 @@ import com.tarigor.employeeservice.service.EmployeeServiceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,10 +23,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final EmployeeServiceUtil employeeServiceUtil;
+    private final ProducerServiceImpl producerService;
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Override
     public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
-        return employeeServiceUtil.convertFromEntityToDto(employeeRepository.save(employeeServiceUtil.convertFromDtoToEntity(employeeDTO)));
+        EmployeeDTO employee = employeeServiceUtil.convertFromEntityToDto(employeeRepository.save(employeeServiceUtil.convertFromDtoToEntity(employeeDTO)));
+        System.out.println("employee from db -> " + employee.toString());
+        producerService.sendMessage(employee);
+        return employee;
     }
 
     @Override
